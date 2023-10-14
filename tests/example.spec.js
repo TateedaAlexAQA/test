@@ -1,14 +1,17 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-const{env, userName, pass,} = require("..//Globalwars").default
-
+require('dotenv').config();
 
 test("Login" , async({page}) => {
-  await page.goto(env);
+  // @ts-ignore
+  await page.goto(process.env.env);
 
   // Заполните поле "Username" и "Password"
-  await page.fill('input[name="username"]', userName);
-  await page.fill('input[name="password"]', pass);
+  // @ts-ignore
+  await page.fill('input[name="username"]', process.env.USER);
+  // @ts-ignore
+  await page.fill('input[name="password"]', process.env.pass);
+  await page.waitForTimeout(5000)
 
   // Нажмите кнопку "Login"
   await page.click('button[type="submit"]');
