@@ -4,13 +4,13 @@ require('dotenv').config();
 
 test("Login" , async({page}) => {
   // @ts-ignore
-  await page.goto(process.env.env);
+  await page.goto(process.env.ENV);
 
   // Заполните поле "Username" и "Password"
   // @ts-ignore
   await page.fill('input[name="username"]', process.env.USER);
   // @ts-ignore
-  await page.fill('input[name="password"]', process.env.pass);
+  await page.fill('input[name="password"]', process.env.PASS);
   await page.waitForTimeout(5000)
 
   // Нажмите кнопку "Login"
