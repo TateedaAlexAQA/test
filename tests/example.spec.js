@@ -15,18 +15,33 @@ console.log('PASS:', process.env.PASS);
   await page.fill('input[name="password"]', process.env.PASS);
   await page.waitForTimeout(5000)
 
-  // Нажмите кнопку "Login"
+  // Click on "Login"
   await page.click('button[type="submit"]');
 
   try {
     await page.waitForSelector('.flash.success', { timeout: 2000 });
-    console.log('Вход выполнен успешно!');
+    console.log('Login successful!');
   } catch (error) {
-    console.error('Не удалось выполнить вход в течение 2 секунд.');
+    console.error('Login failed within 2 seconds.');
     throw error
   }
+  // @ts-ignore
+  await page.context().storageState({path:"./aut.json"});
   await page.waitForTimeout(5000)
 
 })
 
-//add comment for push brabch
+test("reOpen" , async({browser}) => {
+  
+  const context = await browser.newContext({storageState: "./aut.json"});
+  const page = await context.newPage();
+    // @ts-ignore
+    await page.goto("http://the-internet.herokuapp.com/secure");  
+    try {
+      await expect(page).toHaveScreenshot("secure.png")
+      console.log('Login successful!');
+    } catch (error) {
+      console.error('Login failed within 2 seconds.');
+      throw error
+    }
+  })
