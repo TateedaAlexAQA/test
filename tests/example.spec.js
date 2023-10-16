@@ -3,10 +3,12 @@ const { test, expect } = require('@playwright/test');
 require('dotenv').config();
 
 test("Login" , async({page}) => {
+console.log('ENV:', process.env.ENV);
+console.log('USER:', process.env.USER);
+console.log('PASS:', process.env.PASS);
+
   // @ts-ignore
   await page.goto(process.env.ENV);
-
-  // Заполните поле "Username" и "Password"
   // @ts-ignore
   await page.fill('input[name="username"]', process.env.USER);
   // @ts-ignore

@@ -20,9 +20,9 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test
       env:
-        ENV: ${{ vars.ENV }}
-        USER: ${{ vars.USER }}
-        PASS: ${{ vars.PASS }}
+        ENV: ${{ secrets.ENV }}
+        USER: ${{ secrets.USER }}
+        PASS: ${{ secrets.PASS }}
         
     - uses: actions/upload-artifact@v3
       if: always()
