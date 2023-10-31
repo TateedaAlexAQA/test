@@ -2,6 +2,7 @@
 const { test, expect } = require('@playwright/test');
 require('dotenv').config();
 
+
 test("Login" , async({page}) => {
 console.log('ENV:', process.env.ENV);
 console.log('USER:', process.env.USER);
@@ -27,7 +28,7 @@ console.log('PASS:', process.env.PASS);
   }
   // @ts-ignore
   await page.context().storageState({path:"./aut.json"});
-  await page.waitForTimeout(5000)
+  await page.waitForTimeout(10000)
 
 })
 
