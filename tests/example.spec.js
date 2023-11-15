@@ -38,9 +38,9 @@ test("reOpen", async({browser}) => {
   try {
     await expect(page).toHaveScreenshot("secure.png");
 
-    // Создаем файл time.txt внутри директории playwright-report и записываем в него текущее время
+    // Создаем файл time.txt и записываем в него текущее время
     const currentTime = new Date().toLocaleString();
-    const filePath = path.join(process.cwd(), 'playwright-report', 'time.txt');
+    const filePath = path.join(process.cwd(), 'time.txt');
     fs.writeFileSync(filePath, currentTime);
 
     console.log('Login successful!');
@@ -48,13 +48,4 @@ test("reOpen", async({browser}) => {
     console.error('Login failed within 2 seconds.');
     throw error;
   }
-});
-
-// Добавляем файлы к Artifacts
-test.afterAll(async() => {
-  const artifactsPath = process.env.GITHUB_WORKSPACE || process.cwd();
-  const filePath = path.join(process.cwd(), 'playwright-report', 'time.txt');
-
-  // Перемещаем файл в папку с Artifacts
-  fs.renameSync(filePath, path.join(artifactsPath, 'time.txt'));
 });
