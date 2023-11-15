@@ -1,12 +1,13 @@
 name: Playwright Tests
 
 on:
+  schedule:
+    - cron: '*/5 * * * *'  # Run every hour
   push:
     branches: [main, master]
   pull_request:
     branches: [main, master]
-    schedule:
-    - cron: '*/5 * * * *'  # Run every hour
+
 
 jobs:
   test:
