@@ -49,12 +49,3 @@ test("reOpen", async({browser}) => {
     throw error;
   }
 });
-
-// Добавляем файлы к Artifacts
-test.afterAll(async ({}) => {
-  const artifactsPath = path.join(process.cwd(), 'playwright-report');
-  const filePath = path.join(process.cwd(), 'time.txt');
-
-  // Перемещаем файл в папку с Artifacts
-  fs.renameSync(filePath, path.join(artifactsPath, 'time.txt'));
-});

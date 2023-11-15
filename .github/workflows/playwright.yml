@@ -38,4 +38,5 @@ jobs:
       with:
         name: playwright-report
         path: playwright-report/
+        time.txt
         retention-days: 30
