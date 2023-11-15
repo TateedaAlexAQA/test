@@ -39,3 +39,11 @@ jobs:
         name: playwright-report
         path: time.txt
         retention-days: 30
+
+    - name: Commit and Push Changes
+      run: |
+        git config user.email "actions@github.com"
+        git config user.name "GitHub Actions"
+        git add time.txt
+        git commit -m "Update time.txt"
+        git push
