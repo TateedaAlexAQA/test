@@ -4,9 +4,16 @@ on:
   schedule:
     - cron: '*/5 * * * *'  # Run every hour
   push:
-    branches: [main, master]
+    branches:
+      - main
+      - master
+    paths:
+      - '!time.txt'  # Exclude commits that modify time.txt
   pull_request:
-    branches: [main, master]
+    branches:
+      - main
+      - master
+
 
 
 jobs:
