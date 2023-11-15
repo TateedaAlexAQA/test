@@ -49,5 +49,5 @@ jobs:
         git config user.name "GitHub Actions"
         git add time.txt
         git commit -m "Update time.txt"
-        git push --force
+        git push origin main
 
