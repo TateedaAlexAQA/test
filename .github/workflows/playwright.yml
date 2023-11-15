@@ -38,6 +38,9 @@ jobs:
       with:
         name: playwright-report
         path: playwright-report/
-        name: time.txt
+     - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: time
         path: time.txt
         retention-days: 30
