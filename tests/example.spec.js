@@ -38,10 +38,10 @@ test("reOpen", async({browser}) => {
   try {
     await expect(page).toHaveScreenshot("secure.png");
 
-    // Создаем файл time.txt и записываем в него текущее время
+    // Создаем файл time.txt и добавляем в него новую строку с текущим временем
     const currentTime = new Date().toLocaleString();
     const filePath = path.join(process.cwd(), 'time.txt');
-    fs.writeFileSync(filePath, currentTime);
+    fs.appendFileSync(filePath, '\n' + currentTime);
 
     console.log('Login successful!');
   } catch (error) {
@@ -49,3 +49,4 @@ test("reOpen", async({browser}) => {
     throw error;
   }
 });
+
