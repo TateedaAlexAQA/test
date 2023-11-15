@@ -33,11 +33,6 @@ jobs:
         PASS: ${{ secrets.PASS }}
       run: npx playwright test
 
-    - name: Move time.txt to playwright-report
-      run: |
-    mv time.txt playwright-report/
-  working-directory: ${{ github.workspace }}
-
     - uses: actions/upload-artifact@v3
       if: always()
       with:
