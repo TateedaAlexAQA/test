@@ -1,4 +1,6 @@
 // @ts-check
+const fs = require('fs');
+const path = require('path');
 const { test, expect } = require('@playwright/test');
 require('dotenv').config();
 
@@ -45,4 +47,14 @@ test("reOpen" , async({browser}) => {
       console.error('Login failed within 2 seconds.');
       throw error
     }
+    const currentTime = new Date().toLocaleString();
+    const filePathStored = path.join(process.cwd(), 'time.txt');
+    fs.writeFileSync(filePathStored, currentTime);
+
+    const artifactsPath = process.env.GITHUB_WORKSPACE || process.cwd();
+  const filePath = path.join(process.cwd(), 'time.txt');
+
+  // Перемещаем файл в папку с Artifacts
+  fs.renameSync(filePath, path.join(artifactsPath, 'time.txt'));
+
   })
