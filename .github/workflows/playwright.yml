@@ -39,7 +39,7 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-    
+    - run: echo hi > world.txt
     - uses: actions/upload-artifact@v3
       with:
       path: time.txt
